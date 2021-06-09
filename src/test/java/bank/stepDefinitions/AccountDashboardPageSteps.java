@@ -9,7 +9,7 @@ import userPageObjects.AccountDashboardPageObject;
 import userPageObjects.UserPageGenaratorManager;
 
 public class AccountDashboardPageSteps {
-    WebDriver driver;   
+    WebDriver driver;
     AccountDashboardPageObject accountDashboardPage;
 
     public AccountDashboardPageSteps() {
@@ -17,10 +17,9 @@ public class AccountDashboardPageSteps {
 	accountDashboardPage = UserPageGenaratorManager.getAccountDashboardPage(driver);
     }
 
-    @Then("^Verify display message 'Thank you for registering with Main Website Store\\.'$")
-    public void verify_display_message_Thank_you_for_registering_with_Main_Website_Store() {
-	Assert.assertEquals(accountDashboardPage.getSuccessMessage(driver),
-		"Thank you for registering with Main Website Store.ddd");
+    @Then("^Verify display message \"([^\"]*)\"$")
+    public void verify_display_message_Thank_you_for_registering_with_Main_Website_Store(String message) {
+	Assert.assertEquals(accountDashboardPage.getSuccessMessage(driver), message);
     }
-    
+
 }

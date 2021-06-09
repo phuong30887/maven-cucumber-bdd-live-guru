@@ -1007,30 +1007,7 @@ public class AbstractPage {
 
     // ====================== SWITCH PAGE ================
 
-    public void clickToAccountLinkAtHeaderMenu(WebDriver driver) {
-	waitToElementClickable(driver, AbstractPageUI.ACCOUNT_HEADER_MENU);
-	clickToElement(driver, AbstractPageUI.ACCOUNT_HEADER_MENU);
-    }
-
-    public AbstractPage clickToSubMenuItemOfAccountLinkAtHeaderMenu(WebDriver driver, String subPageName) {
-	waitToElementClickable(driver, AbstractPageUI.DYNAMIC_ACCOUNT_SUB_ITEMS_HEADER_MENU, subPageName);
-	clickToElement(driver, AbstractPageUI.DYNAMIC_ACCOUNT_SUB_ITEMS_HEADER_MENU, subPageName);
-
-	switch (subPageName) {
-	case "Register":
-	    return UserPageGenaratorManager.getRegisterPage(driver);
-
-	case "Log In":
-	    return UserPageGenaratorManager.getUserLoginPage(driver);
-
-	case "My Account":
-	    return UserPageGenaratorManager.getAccountDashboardPage(driver);
-
-	default:
-	    return UserPageGenaratorManager.getUserHomepage(driver);
-	}
-
-    }
+   
 
     public AbstractPage clickToPageNameAtBottomPage(WebDriver driver, String pageName) {
 	waitToElementClickable(driver, AbstractPageUI.DYNAMIC_PAGE_NAME_AT_BOTTOM_PAGE, pageName);

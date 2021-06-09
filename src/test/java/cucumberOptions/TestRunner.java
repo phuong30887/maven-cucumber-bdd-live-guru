@@ -12,8 +12,9 @@ import cucumber.api.junit.Cucumber;
 	glue = "bank.stepDefinitions",
 	monochrome = true,
 	plugin = {"pretty", "html:target/site/cucumber-report-default", "json:target/site/cucumber.json"},
-	snippets = SnippetType.CAMELCASE)
-//	tags = {"@displayed"})
+	snippets = SnippetType.UNDERSCORE
+//	tags = {"@Register_user"}
+	)
 
 public class TestRunner {
 

@@ -2,23 +2,21 @@ package bank.stepDefinitions;
 
 import org.openqa.selenium.WebDriver;
 
+import commons.AbstractPage;
 import cucumber.api.java.en.When;
 import cucumberOptions.Hooks;
-import userPageObjects.RegisterPageObject;
-import userPageObjects.UserPageGenaratorManager;
+import userPageUIs.RegisterPageUI;
 import utilities.FakerConfig;
 
-public class RegisterPageSteps {  
-    
-    WebDriver driver;   
-    RegisterPageObject registerPage;
-    FakerConfig fakerData;    
-    static String firstName, lastName, email, pass, fullName, friendEmail;    
+public class RegisterPageSteps extends AbstractPage {
+
+    WebDriver driver;
+    FakerConfig fakerData;
+    static String firstName, lastName, email, pass, fullName, friendEmail;
 
     public RegisterPageSteps() {
 	this.driver = Hooks.openAndQuitBrowser();
-	registerPage = UserPageGenaratorManager.getRegisterPage(driver);
-	
+
 	fakerData = FakerConfig.getData();
 	firstName = fakerData.getFirstName();
 	lastName = fakerData.getLastName();
@@ -29,38 +27,54 @@ public class RegisterPageSteps {
     }
 
     @When("^Input to FirstName textbox$")
-    public void input_to_FirstName_textbox() {        
-	registerPage.inputToFirstNameTextbox(firstName);
+    public void input_to_FirstName_textbox() {
+	waitToElementVisible(driver, RegisterPageUI.FIRSTNAME_TEXTBOX);
+	sendkeyToElement(driver, RegisterPageUI.FIRSTNAME_TEXTBOX, firstName);
     }
 
     @When("^Input to LastName textbox$")
     public void input_to_LastName_textbox() {
-	registerPage.inputToLastNameTextbox(lastName);
-        
+	waitToElementVisible(driver, RegisterPageUI.LASTNAME_TEXTBOX);
+	sendkeyToElement(driver, RegisterPageUI.LASTNAME_TEXTBOX, lastName);
     }
 
     @When("^Input to Email textbox$")
     public void input_to_Email_textbox() {
-	registerPage.inputToEmailTextbox(email);
-        
+	waitToElementVisible(driver, RegisterPageUI.EMAIL_TEXTBOX);
+	sendkeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, email);
     }
 
     @When("^Input to Password textbox$")
     public void input_to_Password_textbox() {
-	registerPage.inputToPasswordTextbox(pass);
-        
+	waitToElementVisible(driver, RegisterPageUI.PASSWORD_TEXTBOX);
+	sendkeyToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, pass);
     }
 
     @When("^Input to Confirm Password textbox$")
     public void input_to_Confirm_Password_textbox() {
-	registerPage.inputToConfirmPasswordTextbox(pass);
-        
+	waitToElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
+	sendkeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, pass);
     }
 
     @When("^I click to Register button$")
     public void i_click_to_Register_button() {
-	registerPage.clickToRegisterButton();
-        
+	waitToElementClickable(driver, RegisterPageUI.REGISTER_BUTTON);
+	clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
     }
     
+    public void RegisterAnUser() {
+	
+	input_to_FirstName_textbox();
+
+	input_to_LastName_textbox();
+
+	input_to_Email_textbox();
+	
+	input_to_Password_textbox();
+	
+	input_to_Confirm_Password_textbox();
+	
+	i_click_to_Register_button();
+    }
+
 }
