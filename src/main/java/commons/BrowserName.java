@@ -1,0 +1,5 @@
+package commons;
+
+public enum BrowserName {
+    CHROME_UI, CHROME_HEADLESS, FIREFOX_UI, FIREFOX_HEADLESS, EDGE_CHROMIUM, SAFARI, IE;
+}
