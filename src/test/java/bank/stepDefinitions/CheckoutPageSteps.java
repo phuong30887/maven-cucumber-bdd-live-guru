@@ -67,5 +67,50 @@ public class CheckoutPageSteps extends AbstractPage {
 	System.out.println("============== totalValue: " + totalValue);
 	return totalValue;
     }
+    
+    @When("^I input \"([^\"]*)\" to quantity textbox$")
+    public void i_input_to_quantity_textbox(String productQuantity) {
+	waitToElementVisible(driver, ShoppingCartPageUI.QUANTITY_TEXTBOX);
+	sendkeyToElement(driver, ShoppingCartPageUI.QUANTITY_TEXTBOX, productQuantity);        
+    }
+
+    @When("^I click to Update button$")
+    public void i_click_to_Update_button() {
+	waitToElementClickable(driver, ShoppingCartPageUI.UPDATE_BUTTON);
+	clickToElement(driver, ShoppingCartPageUI.UPDATE_BUTTON);        
+    }
+
+    @Then("^I see the error message \"([^\"]*)\"$")
+    public void i_see_the_error_message(String errorMessage) {
+        Assert.assertEquals(errorMessage, getErrorMessage(driver));        
+    }
+
+    @Then("^I see the message \"([^\"]*)\"$")
+    public void i_see_the_message(String expectedMessage) {
+	waitToElementVisible(driver, ShoppingCartPageUI.DYNAMIC_MAXIMUN_QUANTITY_ALLOWED_ERROR_MESSAGE, ProductListingPageSteps.productName);	
+	String actualMessage = getElementText(driver, ShoppingCartPageUI.DYNAMIC_MAXIMUN_QUANTITY_ALLOWED_ERROR_MESSAGE, ProductListingPageSteps.productName);
+	Assert.assertEquals(expectedMessage, actualMessage);
+    }
+
+    @When("^I click to Empty Cart link$")
+    public void i_click_to_Empty_Cart_link() {
+	waitToElementClickable(driver, ShoppingCartPageUI.EMPTY_CART_LINK);
+	clickToElement(driver, ShoppingCartPageUI.EMPTY_CART_LINK);	        
+    }
+    
+    
+    @Then("^I see the empty message \"([^\"]*)\" at Shopping Cart page$")
+    public void i_see_the_empty_message_at_Shopping_Cart_page(String expectedMessage) {
+	waitToElementVisible(driver, ShoppingCartPageUI.SHOPPING_CART_IS_EMPTY_MESSAGE, ProductListingPageSteps.productName);	
+	String actualMessage = getElementText(driver, ShoppingCartPageUI.SHOPPING_CART_IS_EMPTY_MESSAGE, ProductListingPageSteps.productName);
+	Assert.assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Then("^I see the no items message \"([^\"]*)\" at Shopping Cart page$")
+    public void i_see_the_no_items_message_at_Shopping_Cart_page(String expectedMessage) {
+	waitToElementVisible(driver, ShoppingCartPageUI.NO_ITEMS_MESSAGE, ProductListingPageSteps.productName);	
+	String actualMessage = getElementText(driver, ShoppingCartPageUI.NO_ITEMS_MESSAGE, ProductListingPageSteps.productName);
+	Assert.assertEquals(expectedMessage, actualMessage);
+    }
 
 }

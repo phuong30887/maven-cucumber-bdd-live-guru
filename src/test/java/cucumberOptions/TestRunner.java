@@ -12,8 +12,8 @@ import cucumber.api.junit.Cucumber;
 	glue = "bank.stepDefinitions",
 	monochrome = true,
 	plugin = {"pretty", "html:target/site/cucumber-report-default", "json:target/site/cucumber.json"},
-	snippets = SnippetType.UNDERSCORE
-//	tags = {"@Verify_Discount_Coupon_Works_Correctly"}
+	snippets = SnippetType.UNDERSCORE 
+//	tags = {"@Compare_Two_Products"}
 	)
 
 public class TestRunner {
