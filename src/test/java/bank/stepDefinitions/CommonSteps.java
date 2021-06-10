@@ -42,4 +42,16 @@ public class CommonSteps extends AbstractPage {
 	waitToJQueryAndJSLoadedSuccess(driver);
     }    
 
+    @When("^I click to TV link at header menu$")
+    public void i_click_to_TV_link_at_header_menu() {
+	waitToElementClickable(driver, AbstractPageUI.TV_LINK_AT_HEADER_MENU);
+	clickToElement(driver, AbstractPageUI.TV_LINK_AT_HEADER_MENU);
+	waitToJQueryAndJSLoadedSuccess(driver);
+    }
+    
+    @When("^I Click to Advanced Search link at bottom page$")
+    public void i_Click_to_Advanced_Search_link_at_bottom_page() {
+	waitToElementClickable(driver, AbstractPageUI.DYNAMIC_PAGE_NAME_AT_BOTTOM_PAGE, "Advanced Search");
+	clickToElement(driver, AbstractPageUI.DYNAMIC_PAGE_NAME_AT_BOTTOM_PAGE, "Advanced Search");
+    }
 }

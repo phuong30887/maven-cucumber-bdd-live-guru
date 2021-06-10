@@ -69,4 +69,10 @@ public class ProductListingPageSteps extends AbstractPage {
 	switchToWindowByID(driver, parentWindowID);
     }
     
+    @When("^I click to Add to Wishlist link of product \"([^\"]*)\"$")
+    public void i_click_to_Add_to_Wishlist_link_of_product(String productName) {
+	waitToElementClickable(driver, ProductListingPageUI.DYNAMIC_ADD_TO_WISHLIST_LINK_BY_PRODUCT_NAME, productName);
+	clickToElement(driver, ProductListingPageUI.DYNAMIC_ADD_TO_WISHLIST_LINK_BY_PRODUCT_NAME, productName);
+    }
+    
 }

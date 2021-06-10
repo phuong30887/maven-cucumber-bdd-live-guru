@@ -25,31 +25,31 @@ Scenario: TC 02 Login Success To System
 	#	Then I see My Dashboard page
 	#	And I see my full name is displayed
 	
-#@Verify_cost_of_product 
-#Scenario: TC 03 Verify Cost Of Product In List Page Equals to Details Page 
-#	When I click to Mobile link at header menu 
-#	And I get cost of "Samsung Galaxy" at product listing page 
-#	And I click to product link "Samsung Galaxy" 
-#	Then I see the cost at product detail page equals to cost at product listing page 
-#	
-#@Verify_Discount_Coupon_Works_Correctly 
-#Scenario: TC 04 Verify Discount Coupon Works Correctly 
-#	When I click to Add to card button 
-#	And Input "GURU50" to Discount codes textbox 
-#	And Click to Apply button 
-#	Then I see the success message Coupon code "GURU50" was applied. displayed 
-#	And I see the discount value is "-$6.50" 
-#	And I see the grand total value is discounted "-$6.50" 
-#	
-#@Verify_Can_Not_Add_More_Than_500_Items_To_Cart 
-#Scenario: TC 05 Verify Can Not Add More Than 500 Items To Cart 
-#	When  I input "501" to quantity textbox 
-#	And   I click to Update button 
-#	Then   I see the error message "Some of the products cannot be ordered in requested quantity." 
-#	And    I see the message "* The maximum quantity allowed for purchase is 500." 
-#	When I click to Empty Cart link 
-#	Then I see the empty message "SHOPPING CART IS EMPTY" at Shopping Cart page 
-#	And I see the no items message "You have no items in your shopping cart." at Shopping Cart page 
+@Verify_cost_of_product 
+Scenario: TC 03 Verify Cost Of Product In List Page Equals to Details Page 
+	When I click to Mobile link at header menu 
+	And I get cost of "Samsung Galaxy" at product listing page 
+	And I click to product link "Samsung Galaxy" 
+	Then I see the cost at product detail page equals to cost at product listing page 
+	
+@Verify_Discount_Coupon_Works_Correctly 
+Scenario: TC 04 Verify Discount Coupon Works Correctly 
+	When I click to Add to card button 
+	And Input "GURU50" to Discount codes textbox 
+	And Click to Apply button 
+	Then I see the success message Coupon code "GURU50" was applied. displayed 
+	And I see the discount value is "-$6.50" 
+	And I see the grand total value is discounted "-$6.50" 
+	
+@Verify_Can_Not_Add_More_Than_500_Items_To_Cart 
+Scenario: TC 05 Verify Can Not Add More Than 500 Items To Cart 
+	When  I input "501" to quantity textbox 
+	And   I click to Update button 
+	Then   I see the error message "Some of the products cannot be ordered in requested quantity." 
+	And    I see the message "* The maximum quantity allowed for purchase is 500." 
+	When I click to Empty Cart link 
+	Then I see the empty message "SHOPPING CART IS EMPTY" at Shopping Cart page 
+	And I see the no items message "You have no items in your shopping cart." at Shopping Cart page 
 	
 @Compare_Two_Products 
 Scenario: TC 06 Compare Two Products 
@@ -64,6 +64,27 @@ Scenario: TC 06 Compare Two Products
 	And I see the product name "IPhone" is displayed at compare products table 
 	And I close the Compare Products window 
 	
+@Share_Wishlist_To_Other_People_Using_Email 
+Scenario: TC 07 Share Wishlist To Other People Using Email 
+	When I click to TV link at header menu 
+	And I click to Add to Wishlist link of product "LG LCD" 
+	Then I see the message product "LG LCD" has been addded to your wishlist 
+	When I click to Share Wishlish button 
+	And I input to Email textarea "abc@yahoo.com" 
+	And I input to Message textarea 
+	And I click to Share Wishlish button 
+	Then I see the success Message "Your Wishlist has been shared." 
 	
 	
-	
+@Advanced_Search 
+Scenario: TC 08 Advanced Search 
+	When I Click to Advanced Search link at bottom page 
+	And I input "0" to Price From textbox 
+	And I input "150" to Price To textbox 
+	And Click to Search button 
+	Then I see products have price in range "0" to "150" 
+	When I Click to Advanced Search link at bottom page 
+	And I input "151" to Price From textbox 
+	And I input "1000" to Price To textbox 
+	And Click to Search button 
+	Then I see products have price in range "151" to "1000" 
