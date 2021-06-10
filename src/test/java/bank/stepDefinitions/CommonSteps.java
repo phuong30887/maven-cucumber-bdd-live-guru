@@ -35,5 +35,11 @@ public class CommonSteps extends AbstractPage {
 	clickToElement(driver, AbstractPageUI.DYNAMIC_ACCOUNT_SUB_ITEMS_HEADER_MENU, subPageName);
     }
     
-    
+    @When("^I click on Mobile link at header menu$")
+    public void i_click_on_Mobile_link_at_header_menu() {
+	waitToElementClickable(driver, AbstractPageUI.MOBILE_LINK_AT_HEADER_MENU);
+	clickToElement(driver, AbstractPageUI.MOBILE_LINK_AT_HEADER_MENU);
+	waitToJQueryAndJSLoadedSuccess(driver);
+    }    
+
 }
